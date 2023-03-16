@@ -6,9 +6,8 @@ type Props = {
 export default function Button({text}:Props) {
 
     return (
-        <div className='button'>
-        <button type="submit"> {text}</button>
-        </div>
+        
+        <button type="submit" className='button'> {text}</button>
 
     );
 }

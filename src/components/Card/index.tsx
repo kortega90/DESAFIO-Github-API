@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../Button";
 import "./styles.css";
@@ -7,45 +7,56 @@ type Props = {
   text: string;
 };
 
-type FormData={
-  userGithub:string;
-}
+type FormData = {
+  userGithub: string;
+};
 
 export default function Card({ text }: Props) {
+  
+  const [userGit, setUserGit] = useState<string>();
 
-  const[formData,setFromData] = useState<FormData>(
-    {
-      userGithub: '',
-    });
+  const [formData, setFromData] = useState<FormData>({
+    userGithub: "",
+  });
 
-function handleInputChange(event:any){
-  const value =event.target.value;
-  const name = event.target.name;
-  setFromData({...formData, [name]: value})
-}
+  function handleUserChange(event: any) {
+    setFromData({ ...formData, userGithub: event.target.value });
+  }
+
+  function handleFormSubmit(event: any) {
+    event.preventDefault();
+    setFromData({ ...formData, userGithub: event.target.value });
+  }
+
 
   return (
     <>
       <div className="card">
         <div>
           <h2>{text}</h2>
+          <div className="card-form">
+            <form onSubmit={handleFormSubmit} >
+              <div>
+                <input
+                  name="userGithub"
+                  id="userLogin"
+                  value={formData.userGithub}
+                  type="text"
+                  placeholder="Usuário Github"
+                  onChange={handleUserChange}
+                />
+              </div>
 
-          <form onSubmit={handleFormSubmit} className="card-form">
-            <input
-             name="userGithub"
-             value={formData.userGithub}
-             type="text" 
-             placeholder="Usuário Github"
-             onChange={handleInputChange}
-              />
-          </form>
-          
-        </div>
-
-        <div className="dflex">
-          <Link to="/sub">
-            <Button text="Encontrar" />
-          </Link>
+              <div className="dflex mt20">
+                <Link to={`/before/after/${formData.userGithub}`}>
+                  <button type="submit" className="button">
+                    Encontrar
+                  </button>
+                </Link>
+  
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </>

@@ -14,7 +14,7 @@ function App() {
           <Route index element={<Navigate to="/home" />} />
           <Route path="home" element={<HomeBody />} />
           <Route path="before" element={<Before />}>
-            <Route path="after" element={<After />} />
+            <Route path="after/:profileUser" element={<After />} />
           </Route>
           {/* <Route path="*" element={<NotFound />} /> */}
         </Route>
