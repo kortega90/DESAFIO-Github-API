@@ -16,7 +16,7 @@ function App() {
           <Route path="before" element={<Before />}>
             <Route path="after/:profileUser" element={<After />} />
           </Route>
-          {/* <Route path="*" element={<NotFound />} /> */}
+
         </Route>
       </Routes>
     </BrowserRouter>

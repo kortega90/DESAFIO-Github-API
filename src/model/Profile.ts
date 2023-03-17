@@ -6,4 +6,6 @@ export type ProfileDTO = {
     followers: number;
     location: string;
     name: string;
+    message: string;
+    documentation_url: string;
 }
