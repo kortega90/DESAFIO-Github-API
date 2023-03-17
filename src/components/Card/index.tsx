@@ -13,7 +13,6 @@ type FormData = {
 
 export default function Card({ text }: Props) {
   
-  const [userGit, setUserGit] = useState<string>();
 
   const [formData, setFromData] = useState<FormData>({
     userGithub: "",
@@ -25,7 +24,6 @@ export default function Card({ text }: Props) {
 
   function handleFormSubmit(event: any) {
     event.preventDefault();
-    setFromData({ ...formData, userGithub: event.target.value });
   }
 
 
